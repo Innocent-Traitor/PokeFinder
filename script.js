@@ -1,0 +1,111 @@
+// the pain begins...
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+const pokeNameSpan = document.getElementById('pokemon-name');
+const pokeIdSpan = document.getElementById('pokemon-id');
+const pokeWeightSpan = document.getElementById('weight');
+const pokeHeightSpan = document.getElementById('height');
+const pokeImage = document.getElementById('sprite');
+const pokeTypes = document.getElementById('types');
+const pokeHPElement = document.getElementById('hp');
+const pokeAttackElement = document.getElementById('attack');
+const pokeDefenseElement = document.getElementById('defense');
+const pokeSpAttackElement = document.getElementById('special-attack');
+const pokeSpDefenseElement = document.getElementById('special-defense');
+const pokeSpeedElement = document.getElementById('speed');
+
+const pokeAPI = 'https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/';
+
+searchButton.addEventListener('click', handleInput)
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        handleInput();
+    }
+})
+
+function handleInput() {
+    const string = (searchInput.value)
+                    .toLowerCase()
+                    .replace(/\s/, '-');
+    
+    if (!string) {
+        return
+    }
+
+    fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${string}`)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Bad network response");
+            }
+            return res.json()
+        })
+        .then(data => {
+            destructObject(data); // Have to do this since local variables are dumb sometimes
+        })
+        .catch(err => {
+            console.error('Error: ', err);
+            alert("Pokémon not found");
+            return
+        });
+}
+
+function destructObject(pokeObj) {
+    const {name, id, height, weight, sprites: {front_default}} = pokeObj;
+    let {stats, types} = pokeObj
+    const pokeArr = [name, id, height, weight, front_default];
+    
+    stats = organizeStats(stats);
+    pokeArr.push(stats);
+
+    types = organizeTypes(types);
+    pokeArr.push(types);
+
+    updateUI(pokeArr);
+}
+function organizeStats(obj) {
+    const arr = [];
+    for (let i = 0; i < 6; i++) {
+        arr.push(obj[i].base_stat);
+    }
+    return arr;
+}
+
+function organizeTypes(obj) {
+    const arr = [];
+    arr.push(obj[0].type.name);
+    if (obj[1]) {
+        arr.push(obj[1].type.name);
+    }
+    return arr;
+}
+
+function updateUI(pokeArr) {
+    // Left Half
+    pokeNameSpan.textContent = pokeArr[0].toUpperCase();
+    pokeIdSpan.textContent = pokeArr[1];
+    pokeHeightSpan.textContent = pokeArr[2];
+    pokeWeightSpan.textContent = pokeArr[3];
+    pokeImage.src = pokeArr[4];
+    pokeImage.alt = pokeArr[0];
+    
+    // Stats
+    pokeHPElement.textContent = pokeArr[5][0];
+    pokeAttackElement.textContent = pokeArr[5][1];
+    pokeDefenseElement.textContent = pokeArr[5][2];
+    pokeSpAttackElement.textContent = pokeArr[5][3];
+    pokeSpDefenseElement.textContent = pokeArr[5][4];
+    pokeSpeedElement.textContent = pokeArr[5][5];
+    
+    // Types
+    pokeTypes.innerHTML = `
+        <span class="type ${pokeArr[6][0]}">${pokeArr[6][0].toUpperCase()}</span>
+    `;
+    if (pokeArr[6][1]) {
+        pokeTypes.innerHTML += `
+        <span class="type ${pokeArr[6][1]}">${pokeArr[6][1].toUpperCase()}</span>
+    `;
+    }
+}
+
+
+

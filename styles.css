@@ -1,0 +1,352 @@
+:root {
+    --red: #FF0000;
+    --dark-red: #CC0000;
+    --blue: #3B4CCA;
+    --yellow: #FFDE00;
+    --gold: #B3A125;
+    --background-color: #5c5c5c;
+    --div-background: #767676;
+}
+
+* {
+    font-family: sans-serif, serif;
+    text-align: center;
+}
+
+html {
+    background-color: var(--div-background);
+}
+
+.main-logo {
+    width: 75vw;
+}
+
+h3 {
+    font-size: 24px;
+    text-decoration: underline;
+    margin: 10px auto 5px auto;
+}
+
+input {
+    display: block;
+    margin: 10px auto 5px auto;
+}
+
+button {
+    display: inline;
+    background-color: var(--yellow);
+    border: 2px solid var(--gold);
+}
+
+button:hover {
+    background-color: #ffe84d;
+}
+
+button:active {
+    background-color: var(--gold);
+}
+
+.output-div {
+    margin: 20px auto 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.pokedex-left {
+    position: relative;
+    width: 225px;
+    height: 300px;
+    background-color: var(--red);
+    z-index: 0;
+}
+
+.pokedex-circle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    background: #72bcd4;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.pokedex-circle-red, .pokedex-circle-yellow, .pokedex-circle-green {
+    position: absolute;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid black;
+    z-index: 1;
+}
+
+.pokedex-circle-red {
+    left: 50px;
+    background: darkred;
+}
+
+.pokedex-circle-yellow {
+    left: 70px;
+    background: yellow
+}
+
+.pokedex-circle-green{
+    left: 90px;
+    background: green;
+}
+
+.pokedex-left-box {
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    right: 0;
+    top: 25px;
+    background-color: var(--dark-red);
+    z-index: 1;
+}
+
+.pokedex-left-triangle {
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 45px solid var(--dark-red);
+    top: 25px;
+    right: 23px;
+}
+
+.pokedex-right {
+    position: relative;
+    width: 225px;
+    height: 240px;
+    margin-top: 60px;
+    background-color: var(--red);
+    z-index: 0;
+}
+
+.pokedex-right-box {
+    position: absolute;
+    width: 67.5px;
+    height: 50px;
+    right: 0;
+    top: 25px;
+    background-color: var(--red);
+    z-index: 1;
+    top: -35px;
+    left: 0px;
+}
+
+.pokedex-right-triangle {
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    border-bottom: 45px solid var(--red);
+    top: -35px;
+    left: 23px;
+}
+
+.img-div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80%;
+    background-color: var(--dark-red);
+    z-index: 5;
+}
+
+.pokedex-name {
+    text-align: left;
+    margin: 5px;
+}
+
+#pokemon-name {
+    font-size: 26px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+#pokemon-id {
+    font-size: 18px; 
+}
+
+.pokedex-physical-stats {
+    font-size: 14px;
+    text-align: right;
+    margin: 0px 5px 5px 0px;
+}
+
+#pokemon-img {
+    width: 75%;
+}
+
+#types {
+    position: absolute;
+    display: flex;
+    bottom: 10px;
+    left: 10px;
+    justify-content: center;
+}
+
+.type {
+    width: 80px;
+    height: 18px;
+    display: block;
+    border: 2px solid black;
+    margin-right: 5px;
+    border-radius: 10%;
+    font-size: 14px;
+}
+
+table {
+    margin: 25px auto auto auto;
+    border-spacing: 4px;
+}
+
+tr, td, th {
+    background-color: var(--blue);
+    color: white;
+    border: 2px solid black;
+}
+
+.base {
+    width: 120px;
+}
+
+.stats {
+    width: 50px;
+}
+
+.info-div {
+    display: flex;
+    width: 75vw;
+    margin: 25px auto 0px auto;
+}
+
+.info-blurb {
+    margin: auto;
+}
+
+.moonsoft {
+    width: 64px;
+    height: 64px;
+    margin: auto auto auto auto;
+}
+
+a {
+    color: black;
+}
+
+.contact-div {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 25px;
+}
+
+.contact-link {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+.contact-p {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.contact-img {
+    width: 64px;
+    height: 64px;
+}
+
+
+/* Thank you brave soul who did this to make someone's life easier,
+    that life, being my own. ...( ＿ ＿)ノ｜ */
+/*https://www.epidemicjohto.com/t882-type-colors-hex-colors*/
+.electric {
+    background-color: #F7D02C;
+}
+
+.normal {
+    background-color: #A8A77A;
+}
+
+.fire {
+    background-color: #EE8130;
+}
+
+.water {
+    background-color: #6390F0;
+}
+
+.grass {
+    background-color: #7AC74C;
+}
+
+.ice {
+    background-color: #96D9D6;
+}
+
+.fighting {
+    background-color: #C22E28;
+}
+
+.poison {
+    background-color: #A33EA1;
+}
+
+.ground {
+    background-color: #E2BF65;
+}
+
+.flying {
+    background-color: #A98FF3;
+}
+
+.psychic {
+    background-color: #F95587;
+}
+
+.bug {
+    background-color: #A6B91A;
+}
+
+.rock {
+    background-color: #B6A136;
+}
+
+.ghost {
+    background-color: #735797;
+}
+
+.dragon {
+    background-color: #6F35FC;
+}
+
+.dark {
+    background-color: #705746;
+}
+
+.steel {
+    background-color: #B7B7CE;
+}
+
+.fairy {
+    background-color: #D685AD;
+}
+
+@media only screen and (max-width: 488px) {
+    .output-div {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pokedex-right {
+        margin-top: 35px;
+    }
+}

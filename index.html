@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeFinder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <img src="img/pokefinder.png" alt="pokefinder" class="main-logo">
+    <div class="input-div">
+        <h3>Search by Pokemon name or ID</h3>
+        <input id="search-input" required />
+        <button id="search-button">Search</button>
+    </div>
+    <div class="output-div">
+        <div class="pokedex-left">
+            <div class="pokedex-circle"></div>
+            <div class="pokedex-circle-red"></div>
+            <div class="pokedex-circle-yellow"></div>
+            <div class="pokedex-circle-green"></div>
+            <div class="pokedex-left-triangle"></div>
+            <div class="pokedex-left-box"></div>
+            <div class="img-div">
+                <p class="pokedex-name">
+                    <span id="pokemon-name">Pikachu</span>
+                    #<span id="pokemon-id">25</span>
+                </p>
+                <p class="pokedex-physical-stats">
+                    Weight: <span id="weight">60</span>
+                    Height: <span id="height">4</span>
+                </p>
+                <img src="img/25.png" id="sprite" alt="pikachu" />
+                <div id="types">
+                    <span class="type electric">ELECTRIC</span>
+                </div>
+            </div>
+        </div>
+        <div class="pokedex-right">
+            <div class="pokedex-right-base">
+                <table>
+                    <tr>
+                        <th class="base">Base</th>
+                        <th class="stats">Stats</th>
+                    </tr>
+                    <tr>
+                        <td>HP:</td>
+                        <td id="hp">35</td>
+                    </tr>
+                    <tr>
+                        <td>Attack:</td>
+                        <td id="attack">55</td>
+                    </tr>
+                    <tr>
+                        <td>Defense:</td>
+                        <td id="defense">40</td>
+                    </tr>
+                    <tr>
+                        <td>Sp. Attack:</td>
+                        <td id="special-attack">50</td>
+                    </tr>
+                    <tr>
+                        <td>Sp. Defense:</td>
+                        <td id="special-defense">50</td>
+                    </tr>
+                    <tr>
+                        <td>Speed:</td>
+                        <td id="speed">90</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="pokedex-right-box"></div>
+            <div class="pokedex-right-triangle"></div>
+        </div>
+
+    </div>
+    <div class="info-div">
+        <img src="img/moosoftlogoicon.png" alt="moonsoft logo" class="moonsoft" />
+        <p class="info-blurb">
+            This site was created as part of 
+            <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>'s certification projects.
+            It uses a <a href="https://pokeapi-proxy.freecodecamp.rocks/" target="_blank">freeCodeCamp proxy of pokeAPI</a> in order to return the information.
+            Created by Innocent Traitor, James Moffett, Moonsoft Studios.
+        </p>
+    </div>
+    <div class="contact-div">
+        <a href="https://discord.gg/zGQVhG6KDr" target="_blank" class="contact-link">
+            <img src="img/discordicon.png" class="contact-img" />
+            <p class="contact-p">Discord</p>
+        </a>
+
+        <a href="https://github.com/Innocent-Traitor" target="_blank" class="contact-link">
+            <img src="img/github.png" class="contact-img" />
+            <p class="contact-p">Github</p>
+        </a>
+
+        <a href="mailto:james.moffett@moonsoftstudios.com" target="_blank" class="contact-link">
+            <img src="img/email.png" class="contact-img" />
+            <p class="contact-p">Email</p>
+        </a>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
