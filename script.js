@@ -13,15 +13,36 @@ const pokeDefenseElement = document.getElementById('defense');
 const pokeSpAttackElement = document.getElementById('special-attack');
 const pokeSpDefenseElement = document.getElementById('special-defense');
 const pokeSpeedElement = document.getElementById('speed');
+const pokeImageDir = document.getElementById('img-dir');
+const pokeImageShiny = document.getElementById('img-shiny');
+const pokeImageGender = document.getElementById('img-gender');
 
 const pokeAPI = 'https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/';
+let currentPokeId = 25;
+const imgProps = {
+    back: false,
+    shiny: false,
+    gender: false
+}
 
-searchButton.addEventListener('click', handleInput)
+searchButton.addEventListener('click', handleInput);
+pokeImageDir.addEventListener('click', () => {
+    imgProps.back = !imgProps.back;
+    handleImageChange();
+});
+pokeImageShiny.addEventListener('click', () => {
+    imgProps.shiny = !imgProps.shiny;
+    handleImageChange();
+});
+pokeImageGender.addEventListener('click', () => {
+    imgProps.gender = !imgProps.gender;
+    handleImageChange();
+});
 searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         handleInput();
     }
-})
+});
 
 function handleInput() {
     const string = (searchInput.value)
@@ -61,6 +82,8 @@ function destructObject(pokeObj) {
     pokeArr.push(types);
 
     updateUI(pokeArr);
+    currentPokeId = id;
+    handleImageChange();
 }
 function organizeStats(obj) {
     const arr = [];
@@ -107,5 +130,34 @@ function updateUI(pokeArr) {
     }
 }
 
+function handleImageChange() {
+    let outputString = '';
+    if (imgProps.back) {
+        outputString += 'back/';
+    }
+    if (imgProps.shiny) {
+        outputString += 'shiny/';
+    }
+    if (imgProps.gender) {
+        outputString += 'female/';
+    }
+
+    
+
+    fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${outputString}${currentPokeId}.png`)
+        .then(res => {
+            if (res.ok) {
+                pokeImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${outputString}${currentPokeId}.png`;
+            }
+            else {
+                imgProps.back = false;
+                imgProps.shiny = false;
+                imgProps.gender = false;
+                handleImageChange();
+            }
+        });
+}
 
 
+
+handleInput();

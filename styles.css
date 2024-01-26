@@ -158,6 +158,33 @@ button:active {
     z-index: 5;
 }
 
+#img-dir, #img-shiny, #img-gender {
+    width: 32px;
+    height: 32px;
+    background-color: #76767681;
+    z-index: 5;
+    border-radius: 10%;
+    right: 15px;
+    position: absolute;
+}
+
+#img-dir {
+    top: 75px;
+}
+
+#img-shiny {
+    top: 115px;
+}
+
+#img-gender {
+    top: 155px;
+}
+
+.img-icon {
+    margin: 8px;
+}
+
+
 .pokedex-name {
     text-align: left;
     margin: 5px;
